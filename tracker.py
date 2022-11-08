@@ -39,7 +39,7 @@ def compare():
                 
                 old_follow_list = db[tracked_account]["follows"]
 
-                differences = [value for value in newly_following_users if value.id not in old_follow_list]
+                differences = [value for value in newly_following_users if value.id not in old_follow_list and int(value.followers_count) < 2000]
             
                 if differences:
                     del db[tracked_account]["follows"][len(old_follow_list) - len(differences):]
