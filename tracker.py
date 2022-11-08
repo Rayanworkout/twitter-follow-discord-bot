@@ -59,7 +59,10 @@ def compare():
                         created_at = twitter_user.created_at
                         
                         if twitter_user.url:
-                            profile_bio_url = requests.get(f"https://unshort.herokuapp.com/api/?url={twitter_user.url}").json()["longUrl"]
+                            try:
+                                profile_bio_url = requests.get(f"https://unshort.herokuapp.com/api/?url={twitter_user.url}").json()["longUrl"]
+                            except Exception:
+                                profile_bio_url = "None"
                         else:
                             profile_bio_url = "None"
                         
