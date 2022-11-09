@@ -129,6 +129,7 @@ async def spy(ctx, *args):
     try:
         follows = client.get_users_following(id=user_id, max_results=number_following_stored)
         follows_id = [user.id for user in follows.data]
+    
     except TypeError:
         embed = discord.Embed(
         description=f"**Could not get followers of @{username}, this account may be private ...**",
