@@ -107,10 +107,10 @@ def compare():
 
                             webhook.execute()
 
-                        with open('db.json', 'w') as f:
-                            json.dump(db, f, indent=4)
-                            
-                        print(f"[{get_time()}] New follow(s) for {db[tracked_account]['username']}: {' '.join([user.username for user in differences])}")
+                            with open('db.json', 'w') as f:
+                                json.dump(db, f, indent=4)
+                                
+                            print(f"[{get_time()}] New follow for {db[tracked_account]['username']}: {username}")
                                 
                     else:
                         print(f"[{get_time()}] No new follow for {db[tracked_account]['username']}")
