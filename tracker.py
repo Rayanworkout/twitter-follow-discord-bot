@@ -45,8 +45,6 @@ def compare():
                     del db[tracked_account]["follows"][len(old_follow_list) - len(differences):]
                     db[tracked_account]["follows"] = [value.id for value in differences] + db[tracked_account]["follows"]
 
-                    webhook.remove_embeds()
-
                     for user in differences:
                         
                         twitter_user = api.get_user(user_id=user.id)
@@ -91,13 +89,11 @@ def compare():
                                         f" {friends_count}\n\n**Bio:** {bio}\n\n:link:  **Link in Bio**\n{profile_bio_url}\n\n"
                                         f":hourglass_flowing_sand: **Profile Creation Date**\n{created_at.strftime('%d/%m/%Y')}")
                             
-                            webhook.remove_embeds()
-
                             embed = DiscordEmbed(title=username, description=description,
                                                 url=f'https://twitter.com/{username}', color=color)
                             
                             embed.set_author(name=f"New Follow for {db[tracked_account]['username']}  [{db[tracked_account]['Tag'].upper()}]",
-                                            icon_url=db[tracked_account]['profile_picture'])    
+                                            icon_url=db[tracked_account]['profile_picture'], url=f"https://twitter.com/{username}")    
                             
                             embed.set_thumbnail(url=profile_picture)
                                 
@@ -105,17 +101,19 @@ def compare():
                             
                             webhook.add_embed(embed)
 
-                            webhook.execute()
-
                             with open('db.json', 'w') as f:
                                 json.dump(db, f, indent=4)
                                 
-                            print(f"[{get_time()}] New follow for {db[tracked_account]['username']}: {username}")
-                                
-                    else:
-                        print(f"[{get_time()}] No new follow for {db[tracked_account]['username']}")
+                            print(f"[{get_time()}] New follow for {db[tracked_account]['username']}: "
+                                  f"{'/'.join([user.name for user in differences])}")
                     
-                    time.sleep(200)
+                    webhook.execute()
+                    webhook.remove_embeds()
+                                
+                else:
+                    print(f"[{get_time()}] No new follow for {db[tracked_account]['username']}")
+                    
+                    time.sleep(400)
         except Exception as e:
             requests.get("https://api.telegram.org/bot1768068100:AAHVGEdeItHypLHBfqmMoqdqhX4KdgO08Gc/"
                     "sendMessage?chat_id=901170303&text={}".format("Error with Twitter Tracker: " + str(e)))
