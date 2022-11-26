@@ -114,6 +114,10 @@ def compare():
                     print(f"[{get_time()}] No new follow for {db[tracked_account]['username']}")
                     
                     time.sleep(400)
+        
+        except TypeError:
+            pass
+        
         except Exception as e:
             requests.get("https://api.telegram.org/bot1768068100:AAHVGEdeItHypLHBfqmMoqdqhX4KdgO08Gc/"
                     "sendMessage?chat_id=901170303&text={}".format("Error with Twitter Tracker: " + str(e)))
