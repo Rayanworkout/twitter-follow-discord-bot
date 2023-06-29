@@ -10,11 +10,11 @@ from datetime import datetime
 
 webhook = DiscordWebhook(
     url='https://discord.com/api/webhooks/1037438920050360351/'
-        '3vbCVu0RZfa4KjPm9G2xpC8v-eDzF5LBdvQ65g-rPJ-pNkB4rPEzuUAlElj4dvu_t_lD',
+         '-rPJ-pNkB4rPEzuUAlElj4dvu_t_lD',
     username='Twitter following'
 )
 
-client = tweepy.Client(bearer_token="AAAAAAAAAAAAAAAAAAAAADhdUQEAAAAAaMGUYLBUc9APzkNTXIGNCPpDyF4%3DSFWrzBewEaWgRqDssuvfsQsKjpPMx1zR55QJSWratpDSejEb2T")
+client = tweepy.Client(bearer_token="AAAAAAAAAAAAAAAAAAAAADhdUQEAAAAAaMGUYLBUc9APz%3DSFWrzBewEaWgRqDssuvfsQsKjpPMx1zR55QJSWratpDSejEb2T")
 
 auth = tweepy.OAuthHandler('qi0FcmJWMv1T6x8WYhvD6M8d3', 'HI9gHHJNiTXwBWuJlsXzFUDjOhe2t7gBHXbptCNE1L9JvzhFU6')
 api = tweepy.API(auth, wait_on_rate_limit=True)
