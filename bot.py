@@ -14,7 +14,7 @@ bot = commands.Bot(command_prefix="!", help_command=None, case_insensitive=True,
 auth = tweepy.OAuthHandler('qi0FcmJWMv1T6x8WYhvD6M8d3', 'HI9gHHJNiTXwBWuJlsXzFUDjOhe2t7gBHXbptCNE1L9JvzhFU6')
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-client = tweepy.Client(bearer_token="AAAAAAAAAAAAAAAAAAAAADhdUQEAAAAAaMGUYLBUc9APzkNTXIGNCPpDyF4%3DSFWrzBewEaWgRqDssuvfsQsKjpPMx1zR55QJSWratpDSejEb2T")
+client = tweepy.Client(bearer_token="AAAAAAAAAAAAAAAAAAAAA%3DSFWrzBewEaWgRqDssuvfsQsKjpPMx1zR55QJSWratpDSejEb2T")
 
 
 # TODO AFFICHER CHAQUE TAG ET LES COMPTES TRACKÉS
